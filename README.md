@@ -15,7 +15,7 @@
 2. Create a new rust cli based on this repository:
 
    ```shell
-   cargo generate polymorphic92/rust-cli-templates/templates
+   cargo generate polymorphic92/rust-templates/templates
    ```
 
 Available templates:
