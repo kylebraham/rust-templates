@@ -20,5 +20,6 @@
 
 Available templates:
 
-* clap
-* clap-reqwest-json-blocking
+* cli
+* cli-http-json-blocking
+* cli-http-json
