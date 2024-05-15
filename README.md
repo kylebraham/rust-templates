@@ -15,10 +15,10 @@
 2. Create a new rust cli based on this repository:
 
    ```shell
-   cargo generate polymorphic92/rust-cli-templates/templates
+   cargo generate polymorphic92/rust-templates/templates
    ```
 
 Available templates:
 
-* clap
-* clap-reqwest-json-blocking
+* cli
+* cli-blocking-http-json
