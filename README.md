@@ -23,3 +23,4 @@ Available templates:
 * cli
 * cli-http-json-blocking
 * cli-http-json
+* workspace
