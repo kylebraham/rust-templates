@@ -1,7 +1,7 @@
 use clap::Parser;
 use reqwest::Error;
 use serde::Deserialize;
-use std::{collections::HashMap, future::Future};
+use std::collections::HashMap;
 
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
@@ -22,73 +22,28 @@ struct ResponeJson {
 }
 
 #[tokio::main]
-async fn main() -> Result<(), reqwest::Error> {
+async fn main() -> Result<(), Error> {
     let args = Cli::parse();
 
-    // let req1 = make_request(&args.a, &args.b);
+    let (res_one, res_two) = tokio::join!(
+        make_request(&args.a, &args.b),
+        make_request(&args.a, &args.b)
+    );
 
-    // let req_vec = vec![req1, req2];
+    let res_one = res_one?;
+    println!(
+        "Res1 Args:\n{:?}\n\n\nRes1 Headers:\n{:#?}",
+        res_one.args, res_one.headers
+    );
 
-    let mut futures = vec![];
-    for _ in 0..2 {
-        let mr = make_request(&args.a, &args.b);
-        futures.push(mr);
-    }
-
-    let results = tokio::join!(futures);
-    // req_vec.push(req1);
-    // req_vec.push(req2);
-
-    // let (req1, req2) = tokio::join!(req1, req2);
-    // let req1 = req1?;
-    // let req2 = req2?;
-
-    // print!(
-    //     "Request 1 Args:{:#?}\nRequest 1 HEADERS:{:#?}",
-    //     req1.args, req1.headers
-    // );
-
-    // print!(
-    //     "Request 2 Args:{:#?}\nRequest 2 HEADERS:{:#?}",
-    //     req2.args, req2.headers
-    // );
+    let res_two = res_two?;
+    println!(
+        "Res2 Args:\n{:?}\n\n\nRes2 Headers:\n{:#?}",
+        res_two.args, res_two.headers
+    );
 
     Ok(())
 }
-
-// async fn make_request(param_one: String, param_two: String) {
-//     let client = Client::new();
-//     let url = format!("https://httpbin.org/anything?{}={}", param_one, param_two);
-
-//     println!("URL: {}", url);
-//     let respone = client.get(url).send();
-//     match respone {
-//         Ok(res) => {
-//             // Check the status code
-//             if res.status().is_success() {
-//                 println!("Request successful with status code: {}", res.status());
-//                 // Handle response body here
-//             } else {
-
-//                 // Handle unsuccessful response
-//             }
-
-//             // Deserialize respones JSON
-//             match res.json::<ResponeJson>() {
-//                 Ok(json) => {
-//                     print!("Args:{:#?}\nHEADERS:{:#?}", json.args, json.headers);
-//                 }
-//                 Err(err) => {
-//                     println!("Error occurred while Deserialize respones JSON: {}", err);
-//                 }
-//             }
-//         }
-//         Err(err) => {
-//             // Handle errors from the send function
-//             println!("Error occurred while sending request: {}", err);
-//         }
-//     }
-// }
 
 async fn make_request(param_one: &str, param_two: &str) -> Result<ResponeJson, reqwest::Error> {
     let url = format!("https://httpbin.org/anything?{}={}", param_one, param_two);

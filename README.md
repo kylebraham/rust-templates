@@ -21,4 +21,5 @@
 Available templates:
 
 * cli
-* cli-blocking-http-json
+* cli-http-json-blocking
+* cli-http-json
