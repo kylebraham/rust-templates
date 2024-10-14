@@ -2,7 +2,7 @@
 
 ## ABOUT
 
-`cargo-generate` templates for creating rust CLIs
+Repo containing `cargo-generate` templates for creating rust based projects.
 
 ## Usage
 
@@ -12,10 +12,10 @@
    cargo install cargo-generate
    ```
 
-2. Create a new rust cli based on this repository:
+2. Create a new rust project:
 
    ```shell
-   cargo generate polymorphic92/rust-templates/templates
+   cargo generate https://github.com/kylebraham/rust-templates
    ```
 
 Available templates:
