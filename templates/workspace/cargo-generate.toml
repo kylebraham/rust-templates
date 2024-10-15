@@ -1,0 +1,2 @@
+[placeholders]
+suffix = { prompt = "Suffix ? ", default = "suffix", type = "string" }

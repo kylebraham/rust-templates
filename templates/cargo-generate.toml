@@ -1,7 +1,3 @@
 
 [template]
 sub_templates = ["cli", "cli-http-json-blocking", "cli-http-json", "workspace"]
-
-
-[placeholders]
-prefix = { prompt = "Prefix ? ", default = "prefix", type = "string" }
