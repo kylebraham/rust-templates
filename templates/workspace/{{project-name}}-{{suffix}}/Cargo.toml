@@ -1,7 +1,10 @@
 [package]
-name = "{{prefix}}-member"
+name = "{{project-name}}-{{suffix}}"
 version.workspace = true
 authors.workspace = true
 edition.workspace = true
 
 [dependencies]
+
+
+{{project-name}}-core.workspace = true

@@ -1,11 +1,13 @@
 [workspace]
 resolver = "2"
-members = ["{{prefix}}-*"]
-
-[workspace.dependencies]
+members = ["{{project-name}}-core", "{{project-name}}-{{suffix}}"]
 
 
 [workspace.package]
 authors = ["{{authors}}"]
 version = "0.1.0"
 edition = "2021"
+
+
+[workspace.dependencies]
+{{project-name}}-core = {path = "./{{project-name}}-core"}

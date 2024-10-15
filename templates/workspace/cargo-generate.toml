@@ -1,2 +1,2 @@
 [placeholders]
-prefix = { prompt = "Prefix ? ", default = "prefix", type = "string" }
+suffix = { prompt = "Suffix ? ", default = "suffix", type = "string" }
